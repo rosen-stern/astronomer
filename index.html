@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+
+<!-- index.html:290 Uncaught TypeError: Cannot read property 'style' of null -->
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nina Navazio | Thesis</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Jua&family=VT323&display=swap');
+
+
+        /*
+        font-family: 'Archivo Black', sans-serif;
+font-family: 'Jua', sans-serif;
+font-family: 'VT323', monospace;
+        
+        white: #FBFBFF
+        black: #040F16
+        blue: #00AFB9;
+        red: #BD1E1E
+        
+        
+        */
+
+        * {
+            box-sizing: border-box;
+            font-size: 16px;
+            color: #FBFBFF;
+/*            font-family: 'Jua', sans-serif;*/
+        }
+
+        html {
+            margin: 0;
+            padding: 0;
+            max-width: 100vh - 1px;
+        }
+
+        body {
+            font-family: sans-serif;
+            background-color: #040F16;
+            position: relative;
+            min-height: 100vh;
+        }
+        
+
+        section {
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-family: 'VT323', monospace;
+            font-size: 3em;
+            text-align: center;
+            font-weight: normal;
+        }
+
+        h2 {
+            font-size: 2.3em;
+            color: grey;
+            opacity: 80%;
+        }
+        
+        h3 {
+            font-size: 2em;
+            opacity: 50%;
+            text-align: left;
+        }
+
+        a{
+            color: #00AFB9;
+            text-decoration-line: underline;
+            text-decoration-style: wavy;
+            text-decoration-skip: leading-spaces trailing-spaces edges objects;
+            
+        }
+        
+        .title {
+            position: absolute;
+            z-index: -200;
+            width: 100%;
+            opacity: 20%;
+            font-family: 'Jua', sans-serif;
+            margin: 20px;
+            text-align: center;
+        }
+
+        header {
+            margin: auto;
+            width: 100%;
+            padding: 20px;
+            align-content: center;
+
+        }
+
+        nav {
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            padding-top: 10px;
+            border-bottom: 2px solid lightgrey;
+            background-color: rgba(4, 15, 22, .8);
+            position: -webkit-sticky;
+            position: sticky;
+            top: 0;
+            z-index: 2;
+        }
+
+        .text{
+            margin: auto;
+            padding-bottom: 2.5rem;
+            max-width: 800px;
+        }
+
+        input {
+            visibility: hidden;
+            margin: 0;
+            padding: 0;
+        }
+
+        label {
+            cursor: pointer;
+            padding: 10px;
+            font-size: 2em;
+            font-size: 1em;
+        }
+
+        label #about {
+            cursor: help;
+        }
+
+        input:checked+label {
+            background-color: grey;
+            color: white;
+        }
+
+        /* Text fade in & out https://stackoverflow.com/questions/3331353/transitions-on-the-css-display-property */
+
+        @keyframes fade-in {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fade-out {
+            from {
+                opacity: 1;
+            }
+
+            to {
+                opacity: 0;
+            }
+        }
+
+        /*Footer*/
+
+        footer{
+           position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 2.5rem; 
+            text-align: right;
+            
+  border: 2px solid black;
+  overflow: hidden;
+  white-space: nowrap;
+        }
+        
+        /* Endless marquee: https://codepen.io/Jaskaranbir/pen/JKNgrb */
+
+#marq1 {
+  display: inline-block;
+  animation: marquee 50s linear infinite;
+}
+
+#marq2 {
+  display: inline-block;
+  animation: marquee2 50s linear infinite;
+  animation-delay: 25s;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes marquee2 {
+  from {
+    transform: translateX(0%);
+  }
+  to {
+    transform: translateX(-200%);
+  }
+}
+        
+        
+        
+        /* Cube things! 
+        https://codepen.io/desandro/pen/KRWjzm */
+        .scene {
+            width: 200px;
+            height: 200px;
+            perspective: 400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cube {
+            width: 200px;
+            height: 200px;
+            position: relative;
+            transform-style: preserve-3d;
+            transform: translateZ(-100px);
+            transition: transform 1s;
+        }
+
+        .cube.show-front {
+            transform: translateZ(-100px) rotateY(0deg);
+        }
+
+        .cube.show-right {
+            transform: translateZ(-100px) rotateY(-90deg);
+        }
+
+        .cube.show-back {
+            transform: translateZ(-100px) rotateY(-180deg);
+        }
+
+        .cube.show-left {
+            transform: translateZ(-100px) rotateY(90deg);
+        }
+
+        .cube.show-top {
+            transform: translateZ(-100px) rotateX(-90deg);
+        }
+
+        .cube.show-bottom {
+            transform: translateZ(-100px) rotateX(90deg);
+        }
+
+        .cube__face {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            border: 2px solid black;
+            line-height: 200px;
+            font-family: 'VT323', monospace;
+            font-size: 4em;
+            font-weight: bold;
+            color: white;
+            text-align: center;
+            -webkit-text-stroke-width: .5px;
+            -webkit-text-stroke-color: black;
+        }
+
+
+
+        .cube__face--front,
+        .cube__face--right,
+        .cube__face--back,
+        .cube__face--left,
+        .cube__face--top,
+        .cube__face--bottom {
+            background-image: url('https://static.wikia.nocookie.net/minecraft/images/d/db/Redstone_lamp_.jpg');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .cube__face--front {
+            transform: rotateY(0deg) translateZ(100px);
+        }
+
+        .cube__face--right {
+            transform: rotateY(90deg) translateZ(100px);
+        }
+
+        .cube__face--back {
+            transform: rotateY(180deg) translateZ(100px);
+        }
+
+        .cube__face--left {
+            transform: rotateY(-90deg) translateZ(100px);
+        }
+
+        .cube__face--top {
+            transform: rotateX(90deg) translateZ(100px);
+        }
+
+        .cube__face--bottom {
+            transform: rotateX(-90deg) translateZ(100px);
+        }
+
+        label {
+            margin-right: 10px;
+        }        
+    </style>
+</head>
+
+<body>
+
+    <header>
+
+        <div class="scene">
+            <div class="cube">
+                <div class="cube__face cube__face--front">Welcome</div>
+                <div class="cube__face cube__face--right">Project</div>
+                <div class="cube__face cube__face--back">About</div>
+                <div class="cube__face cube__face--left">Process</div>
+                <div class="cube__face cube__face--bottom">Contact</div>
+            </div>
+        </div>
+    </header>
+
+
+
+
+    <nav>
+        <p class="radio-group">
+
+            <input type="radio" name="rotate-cube-side" value="front" checked id='welcome' />
+            <label for='welcome'>Welcome</label>
+
+
+
+            <input type="radio" name="rotate-cube-side" value="right" id='project' />
+            <label for='project'>Project</label>
+
+
+            <input type="radio" name="rotate-cube-side" value="back" id='about' />
+            <label for='about'>About</label>
+
+
+
+            <input type="radio" name="rotate-cube-side" value="left" id='process' />
+            <label for='process'>Process</label>
+
+            <input type="radio" name="rotate-cube-side" value="bottom" id='contact' />
+            <label for='contact'>Contact</label>
+        </p>
+    </nav>
+
+
+    <div class="text">
+
+        <div id='welcome1'>
+            <h1>Hi! My name's Nina. </h1>
+            <h2>And I made a Minecraft datapack for my senior thesis.</h2>
+
+            <p>Contrary to what my parents think, I haven't <i>just</i> been playing Minecraft for the last few months. I've been <i>modifying</i> it.</p>
+
+            <p>I wanted to tap in to the basic human tendency to look up at the stars. In a Minecraft world, which so clearly parallels the human experience, stars dot the night sky. But players have wondered for years: <i>What do they mean?</i></p>
+
+            <p>Surprisingly, all stars in Minecraft are generated from the same seed. Meaning: all stars in every Minecraft world are generated from the same random number.</p>
+
+            <p>This got me thinking not only about my place in this universe, but the place of every Minecraft world and every Steve and Alex in <i>every</i> Minecraft world. What stories would the stars tell?</p>
+
+            <p>And so, I got to work making a datapack all about those pixels in the night sky.</p>
+            
+            <p>Feel free to learn more about <span onClick="manualChange('project')">my project</span>, <span onClick="manualChange('process')">my process</span>, or <span onClick="manualChange('about')">me</span>. </p>
+
+        </div>
+
+
+        <div id='project1'>
+            <h1>The Project</h1>
+            <h2>An endeavour, to be sure.</h2>
+            
+            <h3>What's a datapack?</h3>
+            
+            <p>This is where I will add information about the final project.</p>
+            
+            <h3>Why a datapack?</h3>
+            
+            <p>Because they're way easier than a mod lol. See <span onClick="manualChange('process')">"Process"</span> for more information.</p>
+            
+            <h3>What'a a datapack?</h3>
+            
+        </div>
+
+
+        <div id='about1'>
+            <h1>About Me!</h1>
+            
+            <h2>Class of 2021.</h2>
+            
+            <p>This will have some info about me.</p>
+            
+        </div>
+
+
+        <div id='process1'>
+            <h1>Process</h1>
+            
+            <h2>Just keep coding and coding and coding and...</h2>
+            
+            
+            <p>This is where  I will add information about the project, including (but not limited to): the original scope, original research, the turning point in mid-winter break, and where it ended up.</p>
+            
+            <h3>How did it start?</h3>
+            
+            <p>This is where I will add information about the final project.</p>
+            
+            <h3>How's it going?</h3>
+            
+            
+        </div>
+
+
+        <div id='contact1'>
+            <h1>Contact me!</h1>
+            <h2>Thanks for stopping by. Have a question, comment, or concern?</h2>
+            <p>You can email me at: navazin1 (at) tcnj (dot) edu.</p>
+        </div>
+
+
+    </div>
+
+    
+    <footer>
+        
+        <div id="marq1">Made with <span style="color:#BD1E1E">&lt;3</span> from quarantine, fall 20 / spring 21 || we used to be normal || i wonder what sort of tale we've falled into? || and, when you want something, all the universe conspires in helping you to achieve it || i swear i wasn't just playing minecraft the whole time || ok i was kinda playing minecraft a lot ill give you that much || does anyone read these scrolling footers? || how do I make them wrap back around? || nvm, got it || </div>
+        
+        <div id="marq2">Made with <span style="color:#BD1E1E">&lt;3</span> from quarantine, fall 20 / spring 21 || we used to be normal || i wonder what sort of tale we've falled into? || and, when you want something, all the universe conspires in helping you to achieve it || i swear i wasn't just playing minecraft the whole time || ok i was kinda playing minecraft a lot ill give you that much || does anyone read these scrolling footers? || how do I make them wrap back around?</div>
+    
+    </footer>
+    
+    <script>
+        //https://codepen.io/desandro/pen/KRWjzm
+        var sides = [
+            ["front", 'welcome1'],
+            ["right", 'project1'],
+            ["back", 'about1'],
+            ["left", 'process1'],
+            ["bottom", 'contact1']
+        ];
+        var cube = document.querySelector('.cube');
+        var radioGroup = document.querySelector('.radio-group');
+        var currentClass = '';
+        var checkedRadio = "";
+
+        function changeSide() {
+
+            checkedRadio = radioGroup.querySelector(':checked');
+
+            var showClass = 'show-' + checkedRadio.value;
+            if (currentClass) {
+                cube.classList.remove(currentClass);
+            }
+            cube.classList.add(showClass);
+            currentClass = showClass;
+
+            changeSection();
+
+        }
+        // set initial side
+        changeSide();
+
+        radioGroup.addEventListener('change', changeSide);
+
+
+        function changeSection() {
+            console.log("changing!");
+
+
+            for (var i = 0; i < sides.length; i++) {
+
+                if (checkedRadio.value == sides[i][0]) {
+                    //console.log("displaying:" + sides[i][1]);
+                    document.getElementById(sides[i][1]).style.display = 'block';
+                    document.getElementById(sides[i][1]).style.animation = 'fade-in 1s';
+
+
+                } else {
+                    //console.log("hiding:" + sides[i][1]);
+                    document.getElementById(sides[i][1]).style.display = 'none';
+                    document.getElementById(sides[i][1]).style.animation = 'fade-out 1s';
+                }
+            }
+
+        }
+        
+        
+        function manualChange(sideName){
+            
+                    document.getElementById(sideName).checked = true;
+                    sideName += "1";
+            
+            for (var i = 0; i < sides.length; i++) {
+
+                if (sideName == sides[i][1]) {
+                    
+            var showClass = 'show-' + sides[i][0];
+            if (currentClass) {
+                cube.classList.remove(currentClass);
+            }
+            cube.classList.add(showClass);
+            currentClass = showClass;
+                    
+                    document.getElementById(sides[i][1]).style.display = 'block';
+                    document.getElementById(sides[i][1]).style.animation = 'fade-in 1s';
+                    
+
+                } else {
+                    document.getElementById(sides[i][1]).style.display = 'none';
+                    document.getElementById(sides[i][1]).style.animation = 'fade-out 1s';
+                }
+            }
+            
+            
+        }
+
+    </script>
+
+
+
+
+</body>
+
+</html>
