@@ -1,0 +1,330 @@
+ @import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Jua&family=VT323&display=swap');
+
+
+        /*
+        font-family: 'Archivo Black', sans-serif;
+font-family: 'Jua', sans-serif;
+font-family: 'VT323', monospace;
+        
+        white: #FBFBFF
+        black: #040F16
+        blue: #00AFB9;
+        red: #BD1E1E
+        
+        
+        */
+
+        * {
+            box-sizing: border-box;
+            font-size: 16px;
+            color: #FBFBFF;
+/*            font-family: 'Jua', sans-serif;*/
+                
+        }
+
+
+canvas {
+  position: fixed;
+  z-index: -1 !important;
+    left:0; 
+    top:0;
+    margin: 0;
+    padding: 0;
+}
+
+
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+
+        html {
+            margin: 0;
+            padding: 0;
+            max-width: 100vh - 1px;
+        }
+
+        body {
+            font-family: sans-serif;
+            background-color: #040F16;
+            position: relative;
+            min-height: 100vh;
+        }
+        
+
+        section {
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-family: 'VT323', monospace;
+            font-size: 3em;
+            text-align: center;
+            font-weight: normal;
+        }
+
+        h2 {
+            font-size: 2.3em;
+            color: grey;
+            opacity: 80%;
+        }
+        
+        h3 {
+            font-size: 2em;
+            opacity: 50%;
+            text-align: left;
+        }
+
+        a{
+            color: #00AFB9;
+            text-decoration-line: underline;
+            text-decoration-style: wavy;
+            text-decoration-skip: leading-spaces trailing-spaces edges objects;
+            
+        }
+        
+code p {
+    padding-left: 2em;
+}
+
+        .title {
+            position: absolute;
+            z-index: -200;
+            width: 100%;
+            opacity: 20%;
+            font-family: 'Jua', sans-serif;
+            margin: 20px;
+            text-align: center;
+        }
+
+        header {
+            margin: auto;
+            width: 100%;
+            align-content: center;
+            padding-top: 20px;
+        }
+
+        nav {
+            text-align: center;
+            margin: 0 auto;
+            padding-top: 30px;
+            width: fit-content;
+           
+            border-bottom: 2px solid lightgrey;
+/*            background-color: rgba(4, 15, 22, .5);*/
+            position: -webkit-sticky;
+            position: sticky;
+            z-index: 2;            
+        }
+
+
+
+        .text{
+            margin: auto;
+            padding-bottom: 2.5rem;
+            max-width: 800px;
+        }
+
+        input {
+            visibility: hidden;
+            margin: 0;
+            padding: 0;
+        }
+
+        label {
+            cursor: pointer;
+            padding: 10px;
+            font-size: 2em;
+            font-size: 1em;
+        }
+
+        label #about {
+            cursor: help;
+        }
+
+        input:checked+label {
+            background-color: grey;
+            color: white;
+        }
+
+        /* Text fade in & out https://stackoverflow.com/questions/3331353/transitions-on-the-css-display-property */
+
+        @keyframes fade-in {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fade-out {
+            from {
+                opacity: 1;
+            }
+
+            to {
+                opacity: 0;
+            }
+        }
+
+        /*Footer*/
+
+        footer{
+           position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 2.5rem; 
+            text-align: right;
+        }
+            
+        
+        
+        /* Cube things! 
+        https://codepen.io/desandro/pen/KRWjzm */
+        .scene {
+            width: 200px;
+            height: 200px;
+            perspective: 400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cube {
+            width: 200px;
+            height: 200px;
+            position: relative;
+            transform-style: preserve-3d;
+            transform: translateZ(-100px);
+            transition: transform 1s;
+        }
+
+        .cube.show-front {
+            transform: translateZ(-100px) rotateY(0deg);
+        }
+
+        .cube.show-right {
+            transform: translateZ(-100px) rotateY(-90deg);
+        }
+
+        .cube.show-back {
+            transform: translateZ(-100px) rotateY(-180deg);
+        }
+
+        .cube.show-left {
+            transform: translateZ(-100px) rotateY(90deg);
+        }
+
+        .cube.show-top {
+            transform: translateZ(-100px) rotateX(-90deg);
+        }
+
+        .cube.show-bottom {
+            transform: translateZ(-100px) rotateX(90deg);
+        }
+
+        .cube__face {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            line-height: 200px;
+            font-family: 'VT323', monospace;
+            font-size: 4em;
+            color: white;
+            text-shadow: 2px 2px 3px black;
+            text-align: center;
+  
+        }
+
+
+
+        .cube__face--front,
+        .cube__face--right,
+        .cube__face--back,
+        .cube__face--left,
+        .cube__face--top,
+        .cube__face--bottom {
+            background-image: url(glowstone.png);
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            image-rendering: pixelated;
+            image-rendering: -moz-crisp-edges;
+            image-rendering: crisp-edges;
+        }
+
+        .cube__face--front {
+            transform: rotateY(0deg) translateZ(100px);
+        }
+
+        .cube__face--right {
+            transform: rotateY(90deg) translateZ(100px);
+        }
+
+        .cube__face--back {
+            transform: rotateY(180deg) translateZ(100px);
+        }
+
+        .cube__face--left {
+            transform: rotateY(-90deg) translateZ(100px);
+        }
+
+        .cube__face--top {
+            transform: rotateX(90deg) translateZ(100px);
+        }
+
+        .cube__face--bottom {
+            transform: rotateX(-90deg) translateZ(100px);
+        }
+
+        label {
+            margin-right: 10px;
+        }     
+        
+        
+        model-viewer {
+            width: 33.3%;
+            height: 200px;
+            float: right;
+            margin: 10px;
+        }
+        

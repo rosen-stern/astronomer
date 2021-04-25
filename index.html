@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+
+<!-- index.html:290 Uncaught TypeError: Cannot read property 'style' of null -->
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Celestial Storytelling | Spring 2021 Thesis</title>
+    <link rel="stylesheet" href="main.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/p5.js"></script>
+    
+    
+<!--    https://github.com/google/model-viewer-->
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+</head>
+
+<body id="stars">
+
+    <header>
+
+        <script src="sketch.js"></script>
+        
+        <div class="scene">
+            <div class="cube">
+                <div class="cube__face cube__face--front">Welcome</div>
+                <div class="cube__face cube__face--right">Project</div>
+                <div class="cube__face cube__face--back">About</div>
+                <div class="cube__face cube__face--left">Process</div>
+                <div class="cube__face cube__face--bottom">Contact</div>
+            </div>
+        </div>
+
+    <nav>
+        <p class="radio-group">
+
+            <input type="radio" name="rotate-cube-side" value="front" checked id='welcome' />
+            <label for='welcome'>Welcome</label>
+
+            <input type="radio" name="rotate-cube-side" value="right" id='project' />
+            <label for='project'>Project</label>
+
+            <input type="radio" name="rotate-cube-side" value="left" id='process' />
+            <label for='process'>Process</label>
+            
+                        <input type="radio" name="rotate-cube-side" value="back" id='about' />
+            <label for='about'>About</label>
+
+            <input type="radio" name="rotate-cube-side" value="bottom" id='contact' />
+            <label for='contact'>Contact</label>
+        </p>
+    </nav>
+</header>
+
+    <div class="text">
+
+        <div id='welcome1'>
+            <h1>Hi! My name's Nina. </h1>
+            <h2>And I made a Minecraft datapack for my senior thesis.</h2>
+
+            <p>Contrary to what my parents think, I haven't <i>just</i> been playing Minecraft for the last few months. I've been <i>modifying</i> it.</p>
+
+            <p>I wanted to tap in to the basic human tendency to look up at the stars. In a Minecraft world, which so clearly parallels the human experience, stars dot the night sky. But players have wondered for years: <i>What do they mean?</i></p>
+            
+            <p>Surprisingly, all stars in Minecraft are generated from the same seed. Meaning: all stars in every Minecraft world are generated from the same random number.</p>
+
+            <p>This got me thinking not only about my place in this universe, but the place of every Minecraft world and every Steve and Alex in <i>every</i> Minecraft world. What stories would the stars tell?</p>
+
+            <p>And so, I got to work making a datapack all about those pixels in the night sky.</p>
+            
+            <p>Feel free to learn more about <span onClick="manualChange('project')">my project</span>, <span onClick="manualChange('process')">my process</span>, or <span onClick="manualChange('about')">me</span>. </p>
+            
+        </div>
+
+
+        <div id='project1'>
+            
+            <div id="mySidenav" class="sidenav">
+            What's a datapack?
+            Why a datapack?
+                <a href="#whats-in-your-datapack">What's in your datapack?</a>       
+            </div>
+            
+            <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; open</span>
+            
+            <h1>The Project</h1>
+            <h2>An endeavour, to be sure.</h2>
+            
+            <h3>What's a datapack?</h3>
+            
+            <p>A Minecraft <a href="https://minecraft.fandom.com/wiki/Data_Pack">datapack</a> is a bunch of code that does stuff in Minecraft. For those familiar with <a href="https://minecraft.fandom.com/wiki/Command_Block">Command Blocks</a>, a datapack is just some files that hold a bunch of command block commands. Datapacks can also do more to the game than command blocks can, adding special advancements, loot tables, recipes, and structures, among other things. Datapack functions, the files that hold the command block lines of code that actually execute while playing Minecraft, are .mcfunction files. The coding language is identical to the command block code, and in fact <a href="http://reddit.com/r/MinecraftCommands">reddit.com/r/MinecraftCommands</a> has been immensely helpful in my project.</p>
+            <p>Each .mcfunction file is its own method, to use standard coding jargon, but methods can <i>not</i> take in any parameters, and each line of code is indepdenent from the other lines (basically, there are no multi-line code statements like if-statements with brackets, for-loops, while-loops, etc.). Instead, to share information between lines of code and functions, you have to use <a href="https://minecraft.fandom.com/wiki/Scoreboard">Scoreboards</a>. Scoreboards are basically a more convoluted version of your standard variable. Instead of being able to simply declare:</p>
+            <code>
+                <p>var a = 0;</p>
+            </code>
+            <p>you have to first set up a Scoreboard Objective within which to hold Socreboard players, which act like variables. Like this:</p>
+            <code>
+                <p>scoreboard objectives add testing dummy</p>
+                <p>scoreboard players add a testing 0</p>
+            </code>
+<!--            <model-viewer src="observatory.glb" alt="A 3D model of the observatory in Minecraft.aaaaaaa" auto-rotate camera-controls></model-viewer>-->
+            <p>There are more minutia about how Scoreboards work and their seemingly infinite amount of restrictions, but that's a basic overview. Also notably, you can't use scoreboard values dynamically. For example, you can't teleport directly to a set of scoreboard values, but would have to write a specific function that takes in a scoreboard value for the x, another value for the y, and another value for the z. The function might look something like this:</p>
+            
+            <code>
+            <p>execute if testing dummy < 15000 constant run tp PlayerName 7500 ~ ~ </p>
+            <p>execute unless testing dummy < 15000 constant run tp PlayerName 22500 ~ ~ ~ </p>
+            </code>
+            
+            <p>Etc. etc., teleporting the player half and then half again until reaching the exact point in the Scoreboard values, instead of being able to read them and just teleport the player right there. These are just some of the many restrictions datapacks have, and for good reason.</p>
+            
+            <p>My impression is that datapacks were deisgned to be just like command blocks, which themselves are designed for new coders. Instead of complex ideas like primitive data types and arrays, command blocks simply deal with the realities of Minecraft, which are mainly numbers. Thus, Scoreboards can only hold integers, though sometimes there are functions in the game that ask for a "scale", meaning Scoreboard theoretically hold doubles and floats. But again, no strings at all.</p>
+            
+            <p>This all may seem incredibly restrictive, but often that's what the most creative solutions need: barriers, challenges, and restirctions.</p>
+            
+            <h3>Why a datapack?</h3>
+            
+            
+            <p>This project originally started as a Minecraft modification (or "mod"), which basically means "actual" coding in a language like Java (see <span onClick="manualChange('process')">my process</span> for more information on what this project <i>almost</i> was). But I eventually settled on a datapack because of its simplicity. It doesn't promise any kind of complex API, but instead promises a list of simple commands you can run in Minecraft to achieve the seemingly impossible. There are a whole range of incredible things you can do with datapacks, including adding <a href="https://www.planetminecraft.com/data-pack/seasons-dimension-datapack">seasons</a>, <a href="https://www.curseforge.com/minecraft/customization/furniture-datapack">furniture</a>, and even <a href="https://www.planetminecraft.com/data-pack/the-expansion-explore-space-in-minecraft/">space adventures</a>.</p>
+            
+            <p>The other advantage of a datapack is that it's incredible easy to install and once the datapack is in your datapacks folder, that's it. They all work multiplayer by design (since they're just command block codes there's also no need for anything special server-side: just put the datapack on the server map and that's it, everyone's using the datapack!). There's also a truly thriving community of datapack creators since it's much easier to get into datapacking than modding (since modding requires knowing a complex, object-oriented language, as well as altering the Minecraft client).</p>
+            
+            <p>Datapacks are also very easy to test-- instead of recompiling <i>all of Minecraft</i> like you would to make a client-side mod like a Forge mod, since datapacks are built in to the experience of Minecraft you can code a datapack, save the file (and even keep it open on your editor) and simply type <code>/reload</code> to test out your newest code. That's it! You can even refresh textures while you're playing Minecraft with <code>T + F3</code>. This way you can see the code you've built immeditately, and more easily make changes and tweaks necessary while the game is running.</p>
+            
+            <p>Because they're way easier than a mod lol. See <span onClick="manualChange('process')">"Process"</span> for more information.</p>
+            
+            <h3 id="whats-in-your-datapack">What's in your datapack?</h3>
+            
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lacus vestibulum sed arcu non odio euismod lacinia. Amet volutpat consequat mauris nunc. Blandit cursus risus at ultrices. Risus viverra adipiscing at in tellus integer. Nulla porttitor massa id neque aliquam vestibulum morbi. Euismod quis viverra nibh cras. Vitae suscipit tellus mauris a diam maecenas sed enim. Consequat interdum varius sit amet mattis vulputate enim nulla. At urna condimentum mattis pellentesque id nibh tortor id.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lacus vestibulum sed arcu non odio euismod lacinia. Amet volutpat consequat mauris nunc. Blandit cursus risus at ultrices. Risus viverra adipiscing at in tellus integer. Nulla porttitor massa id neque aliquam vestibulum morbi. Euismod quis viverra nibh cras. Vitae suscipit tellus mauris a diam maecenas sed enim. Consequat interdum varius sit amet mattis vulputate enim nulla. At urna condimentum mattis pellentesque id nibh tortor id.</p>            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lacus vestibulum sed arcu non odio euismod lacinia. Amet volutpat consequat mauris nunc. Blandit cursus risus at ultrices. Risus viverra adipiscing at in tellus integer. Nulla porttitor massa id neque aliquam vestibulum morbi. Euismod quis viverra nibh cras. Vitae suscipit tellus mauris a diam maecenas sed enim. Consequat interdum varius sit amet mattis vulputate enim nulla. At urna condimentum mattis pellentesque id nibh tortor id.</p>            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lacus vestibulum sed arcu non odio euismod lacinia. Amet volutpat consequat mauris nunc. Blandit cursus risus at ultrices. Risus viverra adipiscing at in tellus integer. Nulla porttitor massa id neque aliquam vestibulum morbi. Euismod quis viverra nibh cras. Vitae suscipit tellus mauris a diam maecenas sed enim. Consequat interdum varius sit amet mattis vulputate enim nulla. At urna condimentum mattis pellentesque id nibh tortor id.</p>            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lacus vestibulum sed arcu non odio euismod lacinia. Amet volutpat consequat mauris nunc. Blandit cursus risus at ultrices. Risus viverra adipiscing at in tellus integer. Nulla porttitor massa id neque aliquam vestibulum morbi. Euismod quis viverra nibh cras. Vitae suscipit tellus mauris a diam maecenas sed enim. Consequat interdum varius sit amet mattis vulputate enim nulla. At urna condimentum mattis pellentesque id nibh tortor id.</p>            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lacus vestibulum sed arcu non odio euismod lacinia. Amet volutpat consequat mauris nunc. Blandit cursus risus at ultrices. Risus viverra adipiscing at in tellus integer. Nulla porttitor massa id neque aliquam vestibulum morbi. Euismod quis viverra nibh cras. Vitae suscipit tellus mauris a diam maecenas sed enim. Consequat interdum varius sit amet mattis vulputate enim nulla. At urna condimentum mattis pellentesque id nibh tortor id.</p>
+            
+            
+        </div>
+
+
+        <div id='about1'>
+            <h1>About Me!</h1>
+            
+            <h2>Class of 2021.</h2>
+            
+            <p>This will have some info about me.</p>
+            
+        </div>
+
+
+        <div id='process1'>
+            <h1>Process</h1>
+            
+            <h2>Just keep coding and coding and coding and...</h2>
+            
+            
+            <p>This is where  I will add information about the project, including (but not limited to): the original scope, original research, the turning point in mid-winter break, and where it ended up.</p>
+            
+            <h3>How did it start?</h3>
+            
+            <p>This is where I will add information about the final project.</p>
+            
+            <h3>How's it going?</h3>
+            
+            
+        </div>
+
+
+        <div id='contact1'>
+            <h1>Contact me!</h1>
+            <h2>Thanks for stopping by. Have a question, comment, or concern?</h2>
+            <p>You can email me at: navazin1 (at) tcnj (dot) edu.</p>
+        </div>
+
+
+    </div>
+
+    
+    <footer>
+        
+        <marquee>Made with <span style="color:#BD1E1E">&lt;3</span> from quarantine, fall 20 / spring 21 || we used to be normal || i wonder what sort of tale we've falled into? || and, when you want something, all the universe conspires in helping you to achieve it || i swear i wasn't just playing minecraft the whole time || ok i was kinda playing minecraft a lot ill give you that much || does anyone read these scrolling footers? || how do I make them wrap back around?</marquee>
+    
+    </footer>
+    
+    <script src="scripts.js"></script>
+    
+</body>
+
+</html>
