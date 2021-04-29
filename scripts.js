@@ -63,14 +63,7 @@ function elementInViewport(el) {
                     //console.log("displaying:" + sides[i][1]);
                     document.getElementById(sides[i][1]).style.display = 'block';
                     document.getElementById(sides[i][1]).style.animation = 'fade-in 1s';
-                    
-                    if(checkedRadio.value == "project"){
-                        document.getElementById("aside-container").display = 'block';
-                    } else {
-                        document.getElementById("aside-container").display = 'none';
-                    }
-
-                } else {
+                          } else {
                     //console.log("hiding:" + sides[i][1]);
                     document.getElementById(sides[i][1]).style.display = 'none';
                     document.getElementById(sides[i][1]).style.animation = 'fade-out 1s';
