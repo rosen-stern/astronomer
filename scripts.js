@@ -1,15 +1,4 @@
 
-
-
-function openNav() {
-  document.getElementById("mySidenav").style.width = "250px";
-}
-
-function closeNav() {
-  document.getElementById("mySidenav").style.width = "0";
-}
-
-
 function elementInViewport(el) {
   var top = el.offsetTop;
   var left = el.offsetLeft;
@@ -74,7 +63,12 @@ function elementInViewport(el) {
                     //console.log("displaying:" + sides[i][1]);
                     document.getElementById(sides[i][1]).style.display = 'block';
                     document.getElementById(sides[i][1]).style.animation = 'fade-in 1s';
-
+                    
+                    if(checkedRadio.value == "project"){
+                        document.getElementById("aside-container").display = 'block';
+                    } else {
+                        document.getElementById("aside-container").display = 'none';
+                    }
 
                 } else {
                     //console.log("hiding:" + sides[i][1]);
