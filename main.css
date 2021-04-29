@@ -44,25 +44,6 @@ canvas {
     padding: 0;
 }
 
-aside {
-  width: 30%;
-  padding-left: 15px;
-  margin-left: 15px;
-  float: left;
-  font-style: italic;
-  background-color: lightgray;
-  position: sticky;
-  position: -webkit-sticky;
-  top: 0; /* required */
-    z-index: 10;
-
-}
-
-::-webkit-scrollbar {
-  display: none;
-}
-
-
         section {
             padding-left: 20px;
             padding-right: 20px;
@@ -75,6 +56,7 @@ aside {
             font-size: 3em;
             text-align: center;
             font-weight: normal;
+
         }
 
         h2 {
@@ -117,7 +99,7 @@ code p {
             margin: auto;
             width: 100%;
             align-content: center;
-            padding-top: 20px;
+/*            padding-top: 20px;*/
         }
 
         nav {
@@ -137,8 +119,9 @@ code p {
 
         .text{
             margin: auto;
-            padding-bottom: 2.5rem;
+/*            padding-bottom: 2.5rem;*/
             max-width: 800px;
+            padding-bottom: 20px;
         }
 
         input {
@@ -191,8 +174,9 @@ code p {
            position: absolute;
             bottom: 0;
             width: 100%;
-            height: 2.5rem; 
+/*            height: 2.5rem; */
             text-align: right;
+            margin-bottom: 20px;
         }
             
         
@@ -250,6 +234,7 @@ code p {
             color: white;
             text-shadow: 2px 2px 3px black;
             text-align: center;
+            
   
         }
 
@@ -306,3 +291,34 @@ code p {
             margin: 10px;
         }
         
+
+/*
+https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_custom_scrollbar2
+*/
+
+
+/* width */
+::-webkit-scrollbar {
+
+    display: none;
+    /*
+  width: 20px;
+    z-index: -1000;
+*/
+}
+
+
+/*
+::-webkit-scrollbar-track {
+  display: none;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #ebb434; 
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #bd9539; 
+}
+*/
