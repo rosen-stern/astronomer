@@ -1,0 +1,11 @@
+{
+    "parent": "item/generated",
+    "textures": {
+        "layer0": "item/sextant"
+    },
+    "overrides": [
+        { "predicate": { "custom_model_data": 175900}, "model": "item/sextant" },
+        { "predicate": { "custom_model_data": 175901}, "model": "item/sextant_1" },
+        { "predicate": { "custom_model_data": 175902}, "model": "item/sextant_2" }
+    ]
+}
