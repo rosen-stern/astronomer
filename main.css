@@ -22,7 +22,7 @@ font-family: 'VT323', monospace;
                 
         }
 
-        html {
+        html, body {
             margin: 0;
             padding: 0;
             max-width: 100vh - 1px;
@@ -33,6 +33,7 @@ font-family: 'VT323', monospace;
             background-color: #040F16;
             position: relative;
             min-height: 100vh;
+            padding-bottom: 20px;
         }
         
 canvas {
@@ -80,11 +81,24 @@ canvas {
             cursor: pointer;
             
         }
+h4, .h4text{
+    padding-left:3rem;
+}
         
 code p {
     padding-left: 2em;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin: 0;
 }
 
+.code1 {
+    color: lightcoral;
+}
+
+.code2{
+    color: lightblue;
+}
         .title {
             position: absolute;
             z-index: -200;
@@ -99,7 +113,7 @@ code p {
             margin: auto;
             width: 100%;
             align-content: center;
-/*            padding-top: 20px;*/
+            padding-top: 20px;
         }
 
         nav {
@@ -125,7 +139,7 @@ code p {
         }
 
         input {
-            visibility: hidden;
+/*            visibility: hidden;*/
             margin: 0;
             padding: 0;
         }
@@ -291,6 +305,16 @@ code p {
             margin: 10px;
         }
         
+img.insert{
+    
+    width: 100%;
+    height: auto;
+    
+}
+
+.description{
+    font-size: .75rem;
+}
 
 /*
 https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_custom_scrollbar2
