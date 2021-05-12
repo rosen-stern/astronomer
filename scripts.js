@@ -24,7 +24,6 @@ function elementInViewport(el) {
         var sides = [
             ["front", 'welcome1'],
             ["right", 'project1'],
-            ["back", 'about1'],
             ["left", 'process1'],
             ["bottom", 'contact1']
         ];
@@ -63,7 +62,9 @@ function elementInViewport(el) {
                     //console.log("displaying:" + sides[i][1]);
                     document.getElementById(sides[i][1]).style.display = 'block';
                     document.getElementById(sides[i][1]).style.animation = 'fade-in 1s';
-                          } else {
+
+
+                } else {
                     //console.log("hiding:" + sides[i][1]);
                     document.getElementById(sides[i][1]).style.display = 'none';
                     document.getElementById(sides[i][1]).style.animation = 'fade-out 1s';
